@@ -11,6 +11,11 @@ connectDB();
 
 const app = express(); 
 
+// Body parsing Middlewwares 
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 //  API ROUTES 
 app.use("/movies", movieRoutes);
 app.use("/auth", authRoutes);
