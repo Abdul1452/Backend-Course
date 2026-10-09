@@ -55,6 +55,7 @@ model WatchlistItem {
   // Relations 
   user User @relation(fields: [userID], references: [id], onDelete: Cascade)
   movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  @@unique([userID, movieId])
 }
 
 
