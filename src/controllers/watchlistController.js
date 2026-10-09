@@ -1,8 +1,8 @@
 import { error } from "node:console";
-import { prisma } from "../config/db";
+import { prisma } from "../config/db.js";
 
 
-const addToWatchlist = async (res, req) => {
+const addToWatchlist = async (req, res) => {
     const { movieId, status, rating, notes, userId } = req.body;
     // Verify movie exists
 
