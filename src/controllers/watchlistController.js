@@ -16,8 +16,8 @@ const addToWatchlist = async (req, res) => {
     // Check if already added 
      const existingInWatchlist = await prisma.watchlistItem.findUnique ({
         where: {
-            userID_movieId: {
-                userID: req.user.id,
+            userId_movieId: {
+                userId: req.user.id,
             movieId: movieId,
         },    
         },
@@ -30,7 +30,7 @@ const addToWatchlist = async (req, res) => {
 
     const watchlistItem = await prisma.watchlistItem.create({
         data: {
-                userID: req.user.id,
+                userId: req.user.id,
             movieId,
             status: status || "PLANNED",
             rating,
@@ -67,7 +67,7 @@ const updateWatchlistItem = async (req, res) => {
     };
 
     // Ensure only owner can update 
-    if (watchlistItem.userID !== req.user.id) {
+    if (watchlistItem.userId !== req.user.id) {
         return res.status(403).json({
             error: "Not allowed to update this watchlist item"
         });
@@ -111,7 +111,7 @@ const removeFromWatchlist = async (req, res) =>{
     };
 
     // Ensure only creator of the item  can delete it 
-    if (watchlistItem.userID !== req.user.id) {
+    if (watchlistItem.userId !== req.user.id) {
         return res.status(403).json({
             error: "Not allowed to update this watchlist item"
         });

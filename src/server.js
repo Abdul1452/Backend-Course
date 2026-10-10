@@ -1,4 +1,5 @@
 import express from "express";
+import cookieParser from "cookie-parser";
 import { config } from "dotenv";
 import { connectDB, disconnectDB } from "./config/db.js";
 
@@ -16,6 +17,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 //  API ROUTES 
 app.use("/movies", movieRoutes);
@@ -62,5 +64,4 @@ process.on("SIGTERM", async () => {
         process.exit(0);
     })
 })
-
 

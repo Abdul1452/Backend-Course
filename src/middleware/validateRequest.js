@@ -8,16 +8,15 @@ export const validateRequest = (schema) => {
             const formatted = result.error.format();
 
             const flatErrors = Object.values(formatted)
-            .flat()
-            .filter(Boolean)
-            .map((err) => err._errors)
-            .flat();
+                .flat()
+                .filter(Boolean)
+                .map((err) => err._errors)
+                .flat();
 
-
-        return res.status(400).json({ message: flatErrors.join(", ") });
+            return res.status(400).json({ message: flatErrors.join(", ") });
         }
 
-
+        req.body = result.data;
         next();
     };
 }

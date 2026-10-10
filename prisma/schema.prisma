@@ -29,22 +29,22 @@ model Movie {
   id String @id @default(uuid())
   title String
   overview String?
-  relaseYear Int
+  releaseYear Int
   genres String[] @default([])
   runtime Int?
   posterUrl String?
-  createdBY String
+  createdBy String
   createdAt DateTime @default(now())
   watchlistItems WatchlistItem[]
 
-  creator User @relation("MovieCreator",fields: [createdBY], references: [id], onDelete: Cascade)
+  creator User @relation("MovieCreator", fields: [createdBy], references: [id], onDelete: Cascade)
   
 }
 
 
 model WatchlistItem {
   id String @id @default(uuid())
-  userID String
+  userId String
   movieId String
   status WatchlistStatus @default(PLANNED)
   rating Int?
@@ -53,9 +53,9 @@ model WatchlistItem {
   updatedAt DateTime @default(now())
 
   // Relations 
-  user User @relation(fields: [userID], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
-  @@unique([userID, movieId])
+  @@unique([userId, movieId])
 }
 
 
