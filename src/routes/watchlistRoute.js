@@ -9,7 +9,7 @@ import { validateRequest } from "../middleware/validateRequest.js";
 import {
     addToWatchlistSchema,
     updateWatchlistSchema,
-} from "../validators/watchlistValidators.js";
+} from "../validators/watchlistValidator.js";
 
 const router = express.Router();
 

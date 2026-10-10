@@ -4,9 +4,9 @@ import { config } from "dotenv";
 import { connectDB, disconnectDB } from "./config/db.js";
 
 // import Routes 
-import movieRoutes from "./routes/movieRoutes.js";
-import authRoutes from "./routes/authRoutes.js";
-import watchlistRoutes    from "./routes/watchlistRoutes.js";
+import movieRoutes from "./routes/movieRoute.js";
+import authRoutes from "./routes/authRoute.js";
+import watchlistRoutes    from "./routes/watchlistRoute.js";
 
 config();
 connectDB();
