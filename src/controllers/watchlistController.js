@@ -127,4 +127,8 @@ const removeFromWatchlist = async (req, res) =>{
     });
 };
 
-export { addToWatchlist };
+export { 
+    addToWatchlist,
+    updateWatchlistItem,
+    removeFromWatchlist
+ };
